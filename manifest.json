@@ -1,0 +1,15 @@
+{
+    "name": "Job Application Autofill",
+    "version": "1.0",
+    "description": "Autocomplete tedious job applications on commonly used websites: Lever, Workday, and more.",
+    "permissions": ["activeTab", "declarativeContent", "storage"],
+    "options_page": "options.html",
+    "background": {
+      "scripts": ["background.js"],
+      "persistent": false
+    },
+    "page_action": {
+      "default_popup": "popup.html"
+    },
+    "manifest_version": 3
+  }
