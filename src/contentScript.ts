@@ -34,10 +34,12 @@ const autoFillValuesLever = (userInfo: userInfoI) => {
             if (userInfo.workAuthorization) {
                 (formOptions.querySelector("input[value=Yes]") as HTMLInputElement).checked = true;
             } else {
-                (formOptions.querySelector("input[value=No]") as HTMLInputElement).checked = true
+                (formOptions.querySelector("input[value=No]") as HTMLInputElement).checked = true;
             }
         }
     }
+
+    
 };
 
 chrome.storage.sync.get("userInfo", (result) => autoFillValuesLever(result.userInfo));
