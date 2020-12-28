@@ -12,6 +12,9 @@
     "typescript": "^4.1.3",
     "web-vitals": "^0.2.4"
   },
+  "scripts": {  
+    "build": "yarn tsc && cp ./src/manifest.json ./dist"
+  },
   "browserslist": {
     "production": [
       ">0.2%",
