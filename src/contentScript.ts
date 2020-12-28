@@ -1,10 +1,14 @@
 
-// Autofill values 
-const autoFillValues = (userInfo: userInfoI) => {
-    //FIXME: allow for upload of resume
-    let linkedinBox: HTMLElement = document.getElementsByName("urls[LinkedIn]")[0];
-    linkedinBox.setAttribute("autocomplete", "off");
-    linkedinBox.setAttribute("value", "This is just a test.");
+const setNodeValue = (elem: HTMLElement, value: string) => {
+    elem.setAttribute("autocomplete", "off");
+    elem.setAttribute("value", value);
 };
 
-chrome.storage.sync.get("userInfo", (result) => autoFillValues(result.userInfo));
+// Autofill values 
+const autoFillValuesLever = (userInfo: userInfoI) => {
+    //FIXME: allow for upload of resume
+    let linkedinBox: HTMLElement = document.getElementsByName("urls[LinkedIn]")[0];
+    setNodeValue(linkedinBox, userInfo.linkedinUrl);
+};
+
+chrome.storage.sync.get("userInfo", (result) => autoFillValuesLever(result.userInfo));
