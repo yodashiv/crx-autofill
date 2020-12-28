@@ -3,13 +3,19 @@
     "version": "1.0",
     "description": "Autocomplete tedious job applications on commonly used websites: Lever, Workday, and more.",
     "permissions": ["activeTab", "declarativeContent", "storage"],
-    "options_page": "options.html",
+    // "options_page": "options.html",
     "background": {
       "scripts": ["js/background.js"],
       "persistent": false
     },
+    "content_scripts": [
+      {
+        "matches": ["*://jobs.lever.co/*"],
+        "js": ["js/contentScript.js"]
+      }
+    ],
     // "page_action": {
     //   "default_popup": "popup.html"
     // },
-    "manifest_version": 3
+    "manifest_version": 2
   }
