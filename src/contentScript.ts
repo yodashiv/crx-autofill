@@ -15,7 +15,7 @@ const autoFillValuesLever = (userInfo: userInfoI) => {
     let twitterBox: HTMLElement | undefined = document.getElementsByName("urls[Twitter]")[0];
     setNodeValue(twitterBox, userInfo.twitterUrl);
     let githubBox: HTMLElement | undefined = document.getElementsByName("urls[GitHub]")[0];
-    setNodeValue(linkedinBox, userInfo.githubUrl);
+    setNodeValue(githubBox, userInfo.githubUrl);
     let portfolioBox: HTMLElement | undefined = document.getElementsByName("urls[Portfolio]")[0];
     setNodeValue(portfolioBox, userInfo.portfolioUrl);
     let otherUrlBox: HTMLElement | undefined = document.getElementsByName("urls[Other]")[0];
