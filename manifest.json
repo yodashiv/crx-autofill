@@ -8,8 +8,8 @@
       "scripts": ["background.js"],
       "persistent": false
     },
-    "page_action": {
-      "default_popup": "popup.html"
-    },
+    // "page_action": {
+    //   "default_popup": "popup.html"
+    // },
     "manifest_version": 3
   }

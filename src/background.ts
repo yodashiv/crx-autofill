@@ -30,3 +30,5 @@ chrome.runtime.onInstalled.addListener(() => {
     chrome.storage.sync.set({"userInfo": emptyUserInfo()});
 });
 
+let message: string = "hello";
+console.log(message);
