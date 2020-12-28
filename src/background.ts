@@ -1,4 +1,4 @@
-interface userInfo {
+interface userInfoI {
     name: string, 
     resumePath: string, 
     email: string, 
@@ -13,7 +13,7 @@ interface userInfo {
 };
 
 //FIXME
-const emptyUserInfo = (): userInfo => ({
+const emptyUserInfo = (): userInfoI => ({
     name: "", 
     resumePath: "", 
     email: "", 
