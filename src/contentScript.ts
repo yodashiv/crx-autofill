@@ -14,7 +14,7 @@ const autoFillValuesLever = (userInfo: userInfoI) => {
     setNodeValue(linkedinBox, userInfo.linkedinUrl);
     let twitterBox: HTMLElement | undefined = document.getElementsByName("urls[Twitter]")[0];
     setNodeValue(twitterBox, userInfo.twitterUrl);
-    let githubBox: HTMLElement | undefined = document.getElementsByName("urls[Github]")[0];
+    let githubBox: HTMLElement | undefined = document.getElementsByName("urls[GitHub]")[0];
     setNodeValue(linkedinBox, userInfo.githubUrl);
     let portfolioBox: HTMLElement | undefined = document.getElementsByName("urls[Portfolio]")[0];
     setNodeValue(portfolioBox, userInfo.portfolioUrl);
@@ -39,7 +39,7 @@ const autoFillValuesLever = (userInfo: userInfoI) => {
         }
     }
 
-    
+
 };
 
 chrome.storage.sync.get("userInfo", (result) => autoFillValuesLever(result.userInfo));
