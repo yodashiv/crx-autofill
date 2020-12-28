@@ -8,7 +8,8 @@ interface userInfoI {
     twitterUrl: string, 
     githubUrl: string, 
     portfolioUrl: string, 
-    usCitizen: boolean, 
+    otherUrl: string,
+    workAuthorization: boolean, 
     graduationYear: string, 
 };
 
@@ -23,7 +24,8 @@ const emptyUserInfo = (): userInfoI => ({
     twitterUrl: "", 
     githubUrl: "", 
     portfolioUrl: "", 
-    usCitizen: false, 
+    otherUrl: "",
+    workAuthorization: true, 
     graduationYear: "", 
 });
 
