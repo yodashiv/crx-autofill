@@ -17,8 +17,8 @@
     "commands": {
       "submit-application-lever": {
         "suggested_key": {
-          "default": "Ctrl+J",
-          "mac": "Command+J"
+          "default": "Alt+K",
+          "mac": "Alt+K"
         },
         "description": "Submits a lever application"
       }
