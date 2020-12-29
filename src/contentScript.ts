@@ -24,7 +24,7 @@ const autoFillValuesLever = (userInfo: userInfoI) => {
     setNodeValue(otherUrlBox, userInfo.otherUrl);
 
     // select the work authorization status
-    let questionDivs: NodeListOf<HTMLDivElement> = document.querySelectorAll("div.text");
+    let questionDivs: NodeListOf<HTMLDivElement> = document.querySelectorAll("div.text:not(.full-width)");
     for (let questionDiv of questionDivs) {
         let textValue: string = questionDiv.innerHTML.toLowerCase();
         if (textValue.includes("united states") && textValue.includes("legally authorized")) {
