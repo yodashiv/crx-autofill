@@ -27,13 +27,30 @@ const autoFillValuesLever = (userInfo: userInfoI) => {
     let questionDivs: NodeListOf<HTMLDivElement> = document.querySelectorAll("div.text:not(.full-width)");
     for (let questionDiv of questionDivs) {
         let textValue: string = questionDiv.innerHTML.toLowerCase();
-        if (textValue.includes("united states") && textValue.includes("legally authorized")) {
+        if (textValue.includes("legally authorized")) {
             // we want the parent's sibling's first child: this will be the UL element
             let formOptions: Element = questionDiv.parentElement.nextElementSibling.firstElementChild;
 
             // now, if work auth is true, then we select first option and fill it in, 
             // else we select the no option and fill it in 
             if (userInfo.workAuthorization) {
+                (formOptions.querySelector("input[value=Yes]") as HTMLInputElement).checked = true;
+            } else {
+                (formOptions.querySelector("input[value=No]") as HTMLInputElement).checked = true;
+            }
+        }
+    }
+
+    // select whether visa sponsorship is needed
+    for (let questionDiv of questionDivs) {
+        let textValue: string = questionDiv.innerHTML.toLowerCase();
+        if (textValue.includes("require sponsorship")) {
+            // we want the parent's sibling's first child: this will be the UL element
+            let formOptions: Element = questionDiv.parentElement.nextElementSibling.firstElementChild;
+
+            // now, if work auth is true, then we select first option and fill it in, 
+            // else we select the no option and fill it in 
+            if (userInfo.sponsorshipRequired) {
                 (formOptions.querySelector("input[value=Yes]") as HTMLInputElement).checked = true;
             } else {
                 (formOptions.querySelector("input[value=No]") as HTMLInputElement).checked = true;
