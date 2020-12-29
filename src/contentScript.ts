@@ -7,9 +7,9 @@ const setNodeValue = (elem: HTMLElement | undefined, value: string) => {
 
 // Autofill values 
 const autoFillValuesLever = (userInfo: userInfoI) => {
-    //FIXME: allow for upload of resume
-    // best we can do right now is automatically click the button for the user
-    // (but they have to select the file themselves)
+    //Automatically click the resume upload button for the user
+    let resumeButton: HTMLElement = document.getElementById("resume-upload-input");
+    resumeButton.click();
 
     //fill out links
     let linkedinBox: HTMLElement | undefined = document.getElementsByName("urls[LinkedIn]")[0];
