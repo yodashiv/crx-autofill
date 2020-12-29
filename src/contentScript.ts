@@ -8,6 +8,8 @@ const setNodeValue = (elem: HTMLElement | undefined, value: string) => {
 // Autofill values 
 const autoFillValuesLever = (userInfo: userInfoI) => {
     //FIXME: allow for upload of resume
+    // best we can do right now is automatically click the button for the user
+    // (but they have to select the file themselves)
 
     //fill out links
     let linkedinBox: HTMLElement | undefined = document.getElementsByName("urls[LinkedIn]")[0];
@@ -39,6 +41,25 @@ const autoFillValuesLever = (userInfo: userInfoI) => {
         }
     }
 
+    //Find the country of citizenship if it exists
+    for (let questionDiv of questionDivs) {
+        let textValue: string = questionDiv.innerHTML.toLowerCase();
+        if (textValue.includes("country of citizenship")) {
+            // we want the parent's sibling's first child: this will be the UL element
+            let countryCitizenBox: Element = questionDiv.parentElement.nextElementSibling.firstElementChild;
+            setNodeValue(countryCitizenBox as HTMLElement, userInfo.countryOfCitizenship);
+        }
+    }
+
+    //Fill out salary expectations if it exists
+    for (let questionDiv of questionDivs) {
+        let textValue: string = questionDiv.innerHTML.toLowerCase();
+        if (textValue.includes("salary expectation")) {
+            // we want the parent's sibling's first child: this will be the UL element
+            let salaryBox: Element = questionDiv.parentElement.nextElementSibling.firstElementChild;
+            setNodeValue(salaryBox as HTMLElement, userInfo.salaryExpectation);
+        }
+    }
 
 };
 

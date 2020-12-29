@@ -10,6 +10,8 @@ interface userInfoI {
     portfolioUrl: string, 
     otherUrl: string,
     workAuthorization: boolean, 
+    countryOfCitizenship: string,
+    salaryExpectation: string,
     graduationYear: string, 
 };
 
@@ -25,6 +27,8 @@ const emptyUserInfo = (): userInfoI => ({
     portfolioUrl: "", 
     otherUrl: "",
     workAuthorization: true, 
+    countryOfCitizenship: "United States",
+    salaryExpectation: "$0 /mo",
     graduationYear: "", 
 });
 
@@ -40,6 +44,8 @@ const testUserInfo = (): userInfoI => ({
     portfolioUrl: "johnportfolio.com", 
     otherUrl: "john.com",
     workAuthorization: true, 
+    countryOfCitizenship: "United States",
+    salaryExpectation: "$4000 /mo",
     graduationYear: "2023", 
 });
 
