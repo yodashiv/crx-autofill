@@ -1,3 +1,5 @@
+import { createWatchCompilerHost } from "typescript";
+
 interface userInfoI {
     name: string, 
     resumePath: string, 
@@ -51,4 +53,21 @@ const testUserInfo = (): userInfoI => ({
 
 chrome.runtime.onInstalled.addListener(() => {
     chrome.storage.sync.set({"userInfo": testUserInfo()});
+});
+
+// Event listenter for keyboard shortcut that will submit the application 
+chrome.commands.onCommand.addListener((command) => {
+
+    // deal with the submit application command
+    if (command == "Ctrl+j") {
+        chrome.tabs.query({active: true, lastFocusedWindow:true}, (tabs) => {
+            let url: string = tabs[0].url;
+            if (url.includes("jobs.lever.co")) {
+                // we need to ask the content script for the submit button element
+                chrome.tabs.sendMessage(tabs[0].id, {msg: "getSubmitButton"}, (response) => {
+                    response.submitButton.click();
+                });
+            }
+        });
+    }
 });

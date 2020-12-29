@@ -8,7 +8,7 @@ const setNodeValue = (elem: HTMLElement | undefined, value: string) => {
 // Autofill values 
 const autoFillValuesLever = (userInfo: userInfoI) => {
     //Automatically click the resume upload button for the user
-    let resumeButton: HTMLElement = document.getElementById("resume-upload-input");
+    let resumeButton: HTMLInputElement = document.getElementById("resume-upload-input") as HTMLInputElement;
     resumeButton.click();
 
     //fill out links
@@ -62,10 +62,24 @@ const autoFillValuesLever = (userInfo: userInfoI) => {
     }
 
     //FIXME: testing; we will try to click the submit button
-    // maybe a keyboard shortcut could execute this? 
+    // maybe a keyboard shortcut could execute this?
+    // function checkResumeSubmitted() {
+    //     if (resumeButton.files.length == 0) {
+    //         window.setTimeout(checkResumeSubmitted, 500);
+    //         console.log("waiting");
+    //     }
+    // } 
     // let submitButton: HTMLButtonElement = document.querySelector("button.postings-btn.template-btn-submit.cerulean");
     // submitButton.click();
 
 };
+
+// Listen for a request 
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if (request.msg == "getSubmitButton") {
+        let submitButton: HTMLButtonElement = document.querySelector("button.postings-btn.template-btn-submit.cerulean");
+        sendResponse({submitButton: submitButton});
+    }
+});
 
 chrome.storage.sync.get("userInfo", (result) => autoFillValuesLever(result.userInfo));

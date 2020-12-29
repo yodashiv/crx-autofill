@@ -2,7 +2,7 @@
     "name": "Job Application Autofill",
     "version": "1.0",
     "description": "Autocomplete tedious job applications on commonly used websites: Lever, Workday, and more.",
-    "permissions": ["activeTab", "declarativeContent", "storage"],
+    "permissions": ["activeTab", "tabs", "declarativeContent", "storage"],
     // "options_page": "options.html",
     "background": {
       "scripts": ["js/background.js"],
@@ -14,6 +14,15 @@
         "js": ["js/leverContentScript.js"]
       }
     ],
+    "commands": {
+      "submit-application-lever": {
+        "suggested_key": {
+          "default": "Ctrl+J",
+          "mac": "Command+J"
+        },
+        "description": "Submits a lever application"
+      }
+    },
     // "page_action": {
     //   "default_popup": "popup.html"
     // },
