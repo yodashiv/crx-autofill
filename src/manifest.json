@@ -11,7 +11,7 @@
     "content_scripts": [
       {
         "matches": ["*://jobs.lever.co/*"],
-        "js": ["js/contentScript.js"]
+        "js": ["js/leverContentScript.js"]
       }
     ],
     // "page_action": {

@@ -61,6 +61,11 @@ const autoFillValuesLever = (userInfo: userInfoI) => {
         }
     }
 
+    //FIXME: testing; we will try to click the submit button
+    // maybe a keyboard shortcut could execute this? 
+    // let submitButton: HTMLButtonElement = document.querySelector("button.postings-btn.template-btn-submit.cerulean");
+    // submitButton.click();
+
 };
 
 chrome.storage.sync.get("userInfo", (result) => autoFillValuesLever(result.userInfo));
