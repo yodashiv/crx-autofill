@@ -1,4 +1,4 @@
-interface userInfoI {
+export interface userInfoI {
     name: string, 
     resumePath: string, 
     email: string, 
@@ -62,7 +62,7 @@ chrome.commands.onCommand.addListener((command) => {
     // deal with the submit application command
     if (command == "submit-application-lever") {
         chrome.tabs.query({active: true, lastFocusedWindow:true}, (tabs) => {
-            let url: string = tabs[0].url;
+            let url: string = tabs[0].url!;
             if (url.includes("jobs.lever.co")) {
                 // we need to ask the content script for the submit button element
                 chrome.tabs.sendMessage(tabs[0].id, {msg: "submitApplication"}, null);
@@ -70,3 +70,5 @@ chrome.commands.onCommand.addListener((command) => {
         });
     }
 });
+
+export {};
