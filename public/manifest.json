@@ -3,7 +3,7 @@
     "version": "1.0",
     "description": "Autocomplete tedious job applications on commonly used websites: Lever, Workday, and more.",
     "permissions": ["activeTab", "tabs", "declarativeContent", "storage"],
-    // "options_page": "options.html",
+    "options_page": "index.html",
     "background": {
       "scripts": ["js/background.js"],
       "persistent": false
