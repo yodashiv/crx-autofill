@@ -1,6 +1,5 @@
 export interface userInfoI {
     name: string, 
-    resumePath: string, 
     email: string, 
     phone: string, 
     currentCompany: string, 
@@ -18,7 +17,6 @@ export interface userInfoI {
 
 const emptyUserInfo = (): userInfoI => ({
     name: "", 
-    resumePath: "", 
     email: "", 
     phone: "", 
     currentCompany: "", 
@@ -36,7 +34,6 @@ const emptyUserInfo = (): userInfoI => ({
 
 const testUserInfo = (): userInfoI => ({
     name: "John Doe", 
-    resumePath: "", 
     email: "john.doe@gmail.com", 
     phone: "123-456-7890", 
     currentCompany: "Acme Inc.", 
