@@ -1,8 +1,11 @@
 import React from 'react';
+import OptionsForm from './ components/optionsForm';
 
 function App() {
   return (
-    <h1> Hello there, this is a test!</h1>
+    <div>
+      <OptionsForm/>
+    </div>
   );
 }
 
