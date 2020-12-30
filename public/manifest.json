@@ -26,5 +26,9 @@
     // "page_action": {
     //   "default_popup": "popup.html"
     // },
+    "web_accessible_resources": [
+      "index.html",
+      "/static/*"
+    ],
     "manifest_version": 2
   }
