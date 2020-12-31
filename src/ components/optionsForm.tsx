@@ -6,28 +6,27 @@ import React, {useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
 
 const handleSave = (event: React.MouseEvent<HTMLButtonElement>, formValues: userInfoI) => {
-    chrome.storage.sync.set({userInfo: formValues}, () => console.log("Set new values in chrome"))
+    chrome.storage.sync.set({userInfo: formValues})
     // chrome.runtime.sendMessage("fpbkaohbijpjlibbhfcfiidjebmkokfb", {msg: "there"}, (response) => {
     //     console.log(response);
     // });
-    console.log("Put submit logic here");
 }
 
-const testUserInfo = (): userInfoI => ({
-    name: "John Doe",
-    email: "john.doe@gmail.com",
-    phone: "123-456-7890",
-    currentCompany: "Acme Inc.",
-    linkedinUrl: "linkedin.com/john",
-    twitterUrl: "twitter.con/john",
-    githubUrl: "github.com/john",
-    portfolioUrl: "johnportfolio.com",
-    otherUrl: "john.com",
-    workAuthorization: true,
+const emptyUserInfo = (): userInfoI => ({
+    name: "", 
+    email: "", 
+    phone: "", 
+    currentCompany: "", 
+    linkedinUrl: "", 
+    twitterUrl: "", 
+    githubUrl: "", 
+    portfolioUrl: "", 
+    otherUrl: "",
+    workAuthorization: true, 
     sponsorshipRequired: false,
     countryOfCitizenship: "United States",
-    salaryExpectation: "$4000 /mo",
-    graduationYear: "2023",
+    salaryExpectation: "$0 /mo",
+    graduationYear: "", 
 });
 
 
@@ -44,15 +43,12 @@ const useStyles = makeStyles((theme) => ({
 export default function OptionsForm(): JSX.Element {
     const classes = useStyles();
 
-    let valueFromStorage: userInfoI = testUserInfo();
+    let valueFromStorage: userInfoI = emptyUserInfo();
     const [formValues, setFormValues] = useState(valueFromStorage);
-
-    console.log(formValues);
 
     useEffect(() => {
         chrome.storage.sync.get(["userInfo"], (result) => {
             setFormValues(result.userInfo);
-            console.log("From the react effect hoook");
         })
     }, []);
 

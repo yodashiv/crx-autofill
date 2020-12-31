@@ -24,8 +24,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "prebuild": "yarn tsc && cp ./src/manifest.json ./public",
+    "prebuild": "yarn tsc src/chromeScripts/background.ts && yarn tsc src/chromeScripts/leverContentScript.ts && rm -rf ./public/js && mkdir ./public/js && cp ./src/chromeScripts/background.js ./public/js && cp ./src/chromeScripts/leverContentScript.js ./public/js && cp ./src/manifest.json ./public",
     "build": "INLINE_RUNTIME_CHUNK=false react-scripts build",
+    "postbuild": "rm ./src/chromeScripts/background.js && rm ./src/chromeScripts/leverContentScript.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
