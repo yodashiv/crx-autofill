@@ -1,5 +1,3 @@
-"use strict";
-exports.__esModule = true;
 var setNodeValue = function (elem, value) {
     if (elem) {
         elem.setAttribute("autocomplete", "off");

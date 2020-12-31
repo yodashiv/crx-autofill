@@ -1,6 +1,3 @@
-"use strict";
-exports.__esModule = true;
-;
 var emptyUserInfo = function () { return ({
     name: "",
     email: "",
