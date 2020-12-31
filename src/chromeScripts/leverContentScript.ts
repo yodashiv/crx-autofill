@@ -27,7 +27,7 @@ const autoFillValuesLever = (userInfo: userInfoI) => {
 
     // select the work authorization status
     let questionDivs: NodeListOf<HTMLDivElement> = document.querySelectorAll("div.text:not(.full-width)");
-    for (let questionDiv of questionDivs) {
+    for (let questionDiv of questionDivs as any) {
         let textValue: string = questionDiv.innerHTML.toLowerCase();
         if (textValue.includes("legally authorized")) {
             // we want the parent's sibling's first child: this will be the UL element
@@ -44,7 +44,7 @@ const autoFillValuesLever = (userInfo: userInfoI) => {
     }
 
     // select whether visa sponsorship is needed
-    for (let questionDiv of questionDivs) {
+    for (let questionDiv of questionDivs as any) {
         let textValue: string = questionDiv.innerHTML.toLowerCase();
         if (textValue.includes("require sponsorship")) {
             // we want the parent's sibling's first child: this will be the UL element
@@ -61,7 +61,7 @@ const autoFillValuesLever = (userInfo: userInfoI) => {
     }
 
     //Find the country of citizenship if it exists
-    for (let questionDiv of questionDivs) {
+    for (let questionDiv of questionDivs as any) {
         let textValue: string = questionDiv.innerHTML.toLowerCase();
         if (textValue.includes("country of citizenship")) {
             // we want the parent's sibling's first child: this will be the UL element
@@ -71,7 +71,7 @@ const autoFillValuesLever = (userInfo: userInfoI) => {
     }
 
     //Fill out salary expectations if it exists
-    for (let questionDiv of questionDivs) {
+    for (let questionDiv of questionDivs as any) {
         let textValue: string = questionDiv.innerHTML.toLowerCase();
         if (textValue.includes("salary expectation")) {
             // we want the parent's sibling's first child: this will be the UL element

@@ -50,7 +50,7 @@ const testUserInfo = (): userInfoI => ({
 });
 
 chrome.runtime.onInstalled.addListener(() => {
-    chrome.storage.sync.set({"userInfo": testUserInfo()});
+    chrome.storage.sync.set({"userInfo": emptyUserInfo()});
 });
 
 // Event listenter for keyboard shortcut that will submit the application 
