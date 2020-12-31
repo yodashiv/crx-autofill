@@ -68,4 +68,11 @@ chrome.commands.onCommand.addListener((command) => {
     }
 });
 
+// Listen for a message from our options page
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.msg == "there") {
+        sendResponse("I got your message buddy!");
+    }
+});
+
 export {};

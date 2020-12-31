@@ -5,7 +5,11 @@ import {userInfoI} from "../chromeScripts/background";
 import React, {useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
 
-const handleSubmit = () => {
+const handleSave = (event: React.MouseEvent<HTMLButtonElement>, formValues: userInfoI) => {
+    chrome.storage.sync.set({userInfo: formValues}, () => console.log("Set new values in chrome"))
+    // chrome.runtime.sendMessage("fpbkaohbijpjlibbhfcfiidjebmkokfb", {msg: "there"}, (response) => {
+    //     console.log(response);
+    // });
     console.log("Put submit logic here");
 }
 
@@ -40,16 +44,20 @@ const useStyles = makeStyles((theme) => ({
 export default function OptionsForm(): JSX.Element {
     const classes = useStyles();
 
-    const [formValues, setFormValues] = useState(testUserInfo());
+    let valueFromStorage: userInfoI = testUserInfo();
+    const [formValues, setFormValues] = useState(valueFromStorage);
 
     console.log(formValues);
 
-    // useEffect(() => {
-    //     chrome.storage.sync.get("userInfo", (result) => null)
-    // });
+    useEffect(() => {
+        chrome.storage.sync.get(["userInfo"], (result) => {
+            setFormValues(result.userInfo);
+            console.log("From the react effect hoook");
+        })
+    }, []);
 
     return (
-    <form onSubmit={handleSubmit}>
+    <form>
         <Paper style={{ padding: 16 }}>
         <Grid container alignItems="flex-start" spacing={2}>
             <Grid item xs={6}>
@@ -197,6 +205,15 @@ export default function OptionsForm(): JSX.Element {
                 value={formValues.graduationYear}
                 onChange={(e) => setFormValues({ ...formValues, graduationYear: e.target.value })}
             />
+            </Grid>
+            <Grid item xs={6}>
+                <Button 
+                variant="contained" 
+                color="primary"
+                onClick={(event) => handleSave(event, formValues)}
+                >
+                Save
+                </Button>
             </Grid>
         </Grid>
         </Paper>
